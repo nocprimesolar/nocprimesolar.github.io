@@ -863,6 +863,8 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
 .sendbox .hint.ok{color:#1b7a3a;font-weight:600}.sendbox .hint.bad{color:#b3261e;font-weight:600}
 
 .chips{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px!important}.chips .chip{padding:8px 4px!important;font-size:.9rem!important;text-align:center;white-space:nowrap}
+
+#stepSite .sitebox{border-top:0;padding-top:0}.sitelead{margin:0;font-size:.85rem;color:var(--muted,#5b6472)}
 </style>
 <header class="top">
   <div class="wrap">
@@ -931,12 +933,7 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
           <label class="phinc"><input type="checkbox" id="phInc"> Include in the quotation PDF</label></div>
         <div class="phpaste" id="phPaste" tabindex="0" role="button" aria-label="Paste a photo here">Types are detected automatically (or choose one above); click here and press <b>Ctrl+V</b> (<b>⌘V</b> on Mac) to paste a copied photo or screenshot, or drag photos onto this box. You can change a photo's type later on its card.</div>
         <p class="err" id="phMsg"></p><div class="phgrid" id="phGrid"></div></div>
-      <div class="sitebox"><p class="eyebrow">Site survey factors</p>
-        <div class="row4"><label class="f" for="sDir">Roof direction<select id="sDir"></select></label>
-          <label class="f" for="sShade">Shading<select id="sShade"></select></label>
-          <label class="f" for="sPR" title="Share of the panels' rated output that reaches the loads">Performance ratio (%)<input id="sPR" type="number" min="50" max="95" step="1"></label>
-          <label class="f" for="sFixed" title="Per customer and metering charges that solar does not remove">Fixed bill charges (₱/mo)<input id="sFixed" type="number" min="0" step="1"></label></div>
-        <p class="hint"><span id="sFactor"></span>. PR: share of rated output reaching the loads after heat, dust, wiring and inverter losses (80% default = 3.6 kWh per kWp a day). </p></div>
+      
       </div></div>
 
     <div class="sechead">
@@ -1028,6 +1025,12 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
           <div id="compare" class="compare" hidden></div>
         </div>
 
+        <div class="step" id="stepSite"><div class="sitebox"><p class="eyebrow">Site survey factors</p><p class="sitelead">Your daily kWh is known. Now the sun and the roof decide how many panels it takes.</p>
+        <div class="row4"><label class="f" for="sDir">Roof direction<select id="sDir"></select></label>
+          <label class="f" for="sShade">Shading<select id="sShade"></select></label>
+          <label class="f" for="sPR" title="Share of the panels' rated output that reaches the loads">Performance ratio (%)<input id="sPR" type="number" min="50" max="95" step="1"></label>
+          <label class="f" for="sFixed" title="Per customer and metering charges that solar does not remove">Fixed bill charges (₱/mo)<input id="sFixed" type="number" min="0" step="1"></label></div>
+        <p class="hint"><span id="sFactor"></span>. PR: share of rated output reaching the loads after heat, dust, wiring and inverter losses (80% default = 3.6 kWh per kWp a day). </p></div></div>
         
       </div>
 
