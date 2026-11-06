@@ -861,6 +861,8 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
 .sendbox .consent input{width:20px;height:20px;flex:0 0 auto;margin-top:2px;accent-color:var(--navy,#0E6B63)}
 .sendbox .btn[disabled]{opacity:.45;cursor:not-allowed}
 .sendbox .hint.ok{color:#1b7a3a;font-weight:600}.sendbox .hint.bad{color:#b3261e;font-weight:600}
+
+.chips{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px!important}.chips .chip{padding:8px 4px!important;font-size:.9rem!important;text-align:center;white-space:nowrap}
 </style>
 <header class="top">
   <div class="wrap">
@@ -957,8 +959,8 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
         <label class="f" for="utilRate">Rate (₱ per kWh)<input id="utilRate" type="number" min="1" max="60" step="0.0001" inputmode="decimal"></label>
       </div>
       <p class="hint" id="utilNote"></p>
-      <p class="quickq">Quick start <span class="hint">Tap a typical monthly bill to fill Step 1, then type your own.</span></p>
-      <div class="chips"><button type="button" class="chip" data-bill="3000">₱3,000 bill</button><button type="button" class="chip" data-bill="6000">₱6,000 bill</button><button type="button" class="chip" data-bill="10000">₱10,000 bill</button><button type="button" class="chip" data-bill="15000">₱15,000 bill</button><button type="button" class="chip" data-bill="25000">₱25,000 bill</button></div>
+      <p class="quickq">Quick start <span class="hint">Tap the bill closest to yours to fill Step 1, then type your own.</span></p>
+      <div class="chips"><button type="button" class="chip" data-bill="3000">₱3,000</button><button type="button" class="chip" data-bill="4000">₱4,000</button><button type="button" class="chip" data-bill="5000">₱5,000</button><button type="button" class="chip" data-bill="6000">₱6,000</button><button type="button" class="chip" data-bill="7000">₱7,000</button><button type="button" class="chip" data-bill="8000">₱8,000</button><button type="button" class="chip" data-bill="9000">₱9,000</button><button type="button" class="chip" data-bill="10000">₱10,000</button><button type="button" class="chip" data-bill="13000">₱13,000</button><button type="button" class="chip" data-bill="15000">₱15,000</button><button type="button" class="chip" data-bill="20000">₱20,000</button><button type="button" class="chip" data-bill="25000">₱25,000</button></div>
       <p class="hint">No sign up needed. Your inputs stay on this phone unless you choose to send your summary to NOC. Only know your bill amount? Type it in Step 1 and the kWh is filled in from your rate.</p></div>
     <div class="est">
       <div class="steps">
