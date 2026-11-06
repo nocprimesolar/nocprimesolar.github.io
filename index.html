@@ -947,7 +947,7 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
     <div class="howto" aria-label="How it works">
       <div><span>1</span><p><b>Enter your bill</b> or build your appliance list hour by hour.</p></div>
       <div><span>2</span><p><b>See your system:</b> panels, inverter, battery, wires and breakers, with the full computation.</p></div>
-      <div><span>3</span><p><b>Show your summary</b> at the NOC Prime Solar kiosk for your free proposal.</p></div>
+      <div><span>3</span><p><b>Send your summary</b> to NOC Prime Solar and we will contact you with a free proposal.</p></div>
     </div>
     <div class="quick">
       <div class="util">
@@ -1090,7 +1090,7 @@ label[for="kbHi"],label[for="kbAvg"]{display:none!important}
         <div class="sumcard" id="sumCard" aria-live="polite">
           <div class="sumhd"><div><p class="eyebrow">NOC Prime Solar · Free PV Calculator</p><h3 id="sumName">Your name</h3><p class="sumaddr" id="sumAddr">Your address</p></div><span class="sumref" id="sumRef">NOC-IIEE-0000</span></div>
           <dl class="sumdl" id="sumDl"></dl>
-          <p class="sumkiosk">Show this screen at the <b>NOC Prime Solar kiosk</b> to get your free proposal.</p>
+          <p class="sumkiosk">Tap <b>Send to NOC</b> below and NOC Prime Solar will contact you with your free proposal.</p>
           <div class="sendbox" id="sendBox">
             <label class="consent"><input type="checkbox" id="sendOk"> <span>I agree that NOC Prime Solar may keep my name, mobile number, address, code and system size, and contact me about a solar proposal. I can ask them to delete it anytime at nocprimesolar@gmail.com.</span></label>
             <button type="button" class="btn gold" id="sendBtn" disabled>Send to NOC</button>
@@ -1485,8 +1485,8 @@ const chain=$$("chain");if(chain)new MutationObserver(()=>{scrub();clearTimeout(
     try{const r=await fetch(URL_,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(body)});
       const j=await r.json().catch(()=>({ok:r.ok}));sent=!!j.ok;if(!sent&&j.error)throw new Error(j.error);}
     catch(e){try{await fetch(URL_,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(body)});sent=true;}catch(e2){sent=false;}}
-    if(sent){store.set("noc_free_sent",{t:Date.now(),ref:body.ref});say(`Sent. Your code is ${body.ref}. Show this screen at our kiosk.`,"ok");}
-    else say("Could not send. Check your signal and try again, or show this screen at our kiosk.","bad");
+    if(sent){store.set("noc_free_sent",{t:Date.now(),ref:body.ref});say(`Sent. Your code is ${body.ref}. We will contact you with your free proposal.`,"ok");}
+    else say("Could not send. Check your signal and try again, or message NOC PRIME SOLAR on Facebook.","bad");
     ready();});
 })();
 scrub();renderSummary();
