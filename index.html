@@ -1,4 +1,7 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><script>(function(){var shown=0;function bar(m){try{if(shown++>2)return;var d=document.getElementById("nocErr");if(!d){d=document.createElement("div");d.id="nocErr";d.style.cssText="position:fixed;left:8px;right:8px;top:8px;z-index:99999;background:#fff3f0;border:1px solid #e0603a;color:#7a2a12;font:12px/1.4 -apple-system,sans-serif;padding:8px 10px;border-radius:10px";d.onclick=function(){d.remove()};(document.body||document.documentElement).appendChild(d)}d.textContent="Calculator hiccup on this phone (tap to hide). Please screenshot for NOC: "+m}catch(e){}}
+window.addEventListener("error",function(e){bar((e.message||"error")+" @"+(e.lineno||"?")+":"+(e.colno||"?"))});
+window.addEventListener("unhandledrejection",function(e){bar("promise: "+(e.reason&&e.reason.message||e.reason))});})();
+</script><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta charset="utf-8">
 <title>NOC Free PV Calculator</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1497,4 +1500,23 @@ scrub();renderSummary();
 </script>
 <script>document.addEventListener("click",e=>{const t=e.target.closest(".itip");document.querySelectorAll(".itip.open").forEach(x=>{if(x!==t)x.classList.remove("open")});if(t&&!e.target.closest(".itxt")){e.preventDefault();e.stopPropagation();t.classList.toggle("open");}},true);</script>
 
+<script>/* safety net: works even if an earlier script stopped on this phone */
+(function(){
+  function $(i){return document.getElementById(i)}
+  var DIR=[["S",1],["SE",.97],["SW",.97],["E",.9],["W",.9],["NE",.84],["NW",.84],["N",.8],["Flat",.95]];
+  var SH=[["none","No shade",1],["morning","Light, morning",.95],["afternoon","Light, afternoon",.93],["moderate","Moderate",.85],["heavy","Heavy",.75]];
+  function fillSite(){var d=$("sDir"),s=$("sShade");
+    if(d&&!d.options.length){d.innerHTML=DIR.map(function(x){return '<option value="'+x[0]+'">'+(x[0]=="Flat"?"Flat / concrete slab":x[0])+' ('+Math.round(x[1]*100)+'%)</option>'}).join("");d.value="S"}
+    if(s&&!s.options.length){s.innerHTML=SH.map(function(x){return '<option value="'+x[0]+'">'+x[1]+' ('+Math.round(x[2]*100)+'%)</option>'}).join("");s.value="none"}
+    var p=$("sPR");if(p&&!p.value)p.value=80;}
+  fillSite();window.addEventListener("load",fillSite);
+  function fire(el){try{el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}))}catch(e){}}
+  document.addEventListener("click",function(ev){var b=ev.target&&ev.target.closest&&ev.target.closest(".chip[data-bill]");if(!b)return;
+    setTimeout(function(){var bill=+b.getAttribute("data-bill"),A=$("bA0"),K=$("bK0");if(!A||!K)return;
+      if(String(A.value)!==String(bill)||!K.value){var r=parseFloat(($("utilRate")||{}).value);if(!(r>0))r=15.0615;
+        var src=$("srcBill");if(src&&!src.checked){src.checked=true;fire(src)}
+        K.value=Math.round(bill/r);A.value=bill;fire(K);fire(A);
+        var c=document.querySelectorAll(".chip");for(var i=0;i<c.length;i++)c[i].classList.toggle("on",c[i]===b)}},60)});
+})();
+</script>
 </body></html>
